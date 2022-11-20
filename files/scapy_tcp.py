@@ -13,14 +13,14 @@ seq = random.randint(10000, 19999)      # Random initial seq number
 syn_packet = TCP(flags='S', seq=seq)
 
 # Making a HTTP request
-sport = -1 # Fill in the source port
-dport = -1 # Fill in the destination port
+sport = 6805 # Fill in the source port
+dport = 80 # Fill in the destination port
 
 syn_packet[TCP].sport = sport
 syn_packet[TCP].dport = dport
 
 # Encapsulate TCP syn packet inside IP packet
-packet = None   # Construct the IP packet here used to send TCP SYN
+packet = ip_packet/syn_packet   # Construct the IP packet here used to send TCP SYN
 
 # send and receive 1 packet (sr1)
 synack_response = sr1(packet)
@@ -32,7 +32,7 @@ my_ack = synack_response.seq + 1
 ack_packet = TCP(sport=sport, dport=dport, flags='A', seq=next_seq, ack=my_ack)
 
 # Encapsulate TCP ack packet inside IP packet
-packet = None # Construct the IP packet here used to send TCP ACK
+packet = ip_packet/ack_packet # Construct the IP packet here used to send TCP ACK
 
 # send packet and do not wait for response
 send(packet)
@@ -40,7 +40,7 @@ send(packet)
 payload_packet = TCP(sport=sport, dport=dport, flags='A', seq=next_seq, ack=my_ack) / "GET / HTTP/1.1\r\nHost: info.cern.ch\r\n\r\n"
 
 # Encapsulate TCP payload packet inside IP packet
-packet = None # Construct the IP packet here used to send HTTP Get request
+packet = ip_packet/payload_packet # Construct the IP packet here used to send HTTP Get request
 
 # send and receive multiple packets (sr)
 reply, error = sr(packet, multi=1, timeout=1)
