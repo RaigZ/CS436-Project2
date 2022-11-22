@@ -13,7 +13,7 @@ seq = random.randint(10000, 19999)      # Random initial seq number
 syn_packet = TCP(flags='S', seq=seq)
 
 # Making a HTTP request
-sport = 6805 # Fill in the source port
+sport = seq # Fill in the source port
 dport = 80 # Fill in the destination port
 
 syn_packet[TCP].sport = sport
