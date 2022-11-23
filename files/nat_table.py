@@ -13,32 +13,57 @@ PUBLIC_IP = "172.16.20.2"
 class NATTable:
     def __init__(self):
         # NAT translation table
-        # ============================ WORK WHERE =====================================
+        # ============================ WORK HERE =====================================
         # IMPLEMENT THIS
-        self.data = None
+        self.data = {}
     
     def _random_id(self):
         return random.randint(30001, 65535)
 
     def set(self, ip_src, id_src) -> Tuple[str, int]:
-        # REMEMBER: Create a new random port for each NEW connection else return saved data if source ip and id if found
-        # Set WAN side mapping PUBLIC_IP, random_id [range 30,000 - 65,535]
-        # ============================ WORK WHERE =====================================
-        new_ip_src = None
-        new_id_src = None
+        # REMEMBER: Create a new random port for each NEW connection else return saved data if source ip and id are found
 
-        self.data
+        # Set WAN side mapping PUBLIC_IP, random_id [range 30,000 - 65,535]
+        # ============================ WORK HERE =====================================
+        
+        '''
+        for ip, id in self.data.items(): 
+            print("ip_src: " + ip_src)
+            print("id_src: " + str(id_src))
+            return ip_src, id_src
+        else:
+        '''
+        # NEXT: Make sure that the new_id_src is not in used_ports[]
+        new_ip_src = PUBLIC_IP
+        new_id_src = self._random_id()
+        print("new_id_src = " + str(new_id_src))
+        self.data = {(new_ip_src, new_id_src): (ip_src, id_src)}
+        print(self.data)
 
         return new_ip_src, new_id_src
 
     def get(self, ip_dst, id_dst) -> Tuple[str, int]:
         # Get LAN side mapping ip_src and id_src
-        # ============================ WORK WHERE =====================================
-        ip_src = None
-        id_src = None
+        # ============================ WORK HERE =====================================
+        #print(self.data)  
 
-        self.data
+        #for self.data in self.data:
+            #keys.append(self.data[1]), vals.append(self.data[1])
+            #self.data
+       
+        #keysList = list(self.data.keys())
+        
+        valsList = list(self.data.values())
+        
+        #print(keysList)
+        #print(valsList)
+        #print(valsList[0][0])
+        #print("keys : ", str(keys))
+        #print("values : ", str(vals))
+        #print (self.data[2])
 
+        ip_src = valsList[0][0]
+        id_src = valsList[0][1]    
         return ip_src, id_src
 
 
