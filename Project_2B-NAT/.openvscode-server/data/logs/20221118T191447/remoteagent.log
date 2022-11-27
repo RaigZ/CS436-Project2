@@ -1,0 +1,9 @@
+[2022-11-18 19:14:47.099] [remoteagent] [info] 
+
+
+
+
+[2022-11-18 19:14:47.099] [remoteagent] [info] Extension host agent started.
+[2022-11-23 06:21:59.144] [remoteagent] [info] [127.0.0.1][0ae45160][ManagementConnection] New connection established.
+[2022-11-23 06:21:59.311] [remoteagent] [warning] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[2022-11-23 06:22:00.128] [remoteagent] [info] [127.0.0.1][0ae45160][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
