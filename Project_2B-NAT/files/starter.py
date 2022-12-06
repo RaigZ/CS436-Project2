@@ -121,7 +121,7 @@ def process_pkt_private(pkt: Packet):
         dst_ip = pkt[IP].dst
 
         ##### creation of new_pkt needs application layer (pkt[Raw] will not work!) #####
-        new_pkt = IP(src=src_pub_ip, dst=dst_ip) / tcp_header / pkt[Raw] # Change this: pkt[Raw]
+        new_pkt = IP(src=src_pub_ip, dst=dst_ip) / tcp_header / "" # Change this: pkt[Raw]
 
     # create a new pkt depending on what is being requested
     # keep track of new and current connections inside a data structure
